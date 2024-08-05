@@ -3,7 +3,7 @@
 /// {@template connection_state}
 /// The state of a WebSocket connection.
 /// {@endtemplate}
-abstract class ConnectionState {
+sealed class ConnectionState {
   /// {@macro connection_state}
   const ConnectionState();
 }
@@ -11,7 +11,7 @@ abstract class ConnectionState {
 /// {@template connecting}
 /// The WebSocket connection has not yet been established.
 /// {@endtemplate}
-class Connecting extends ConnectionState {
+final class Connecting extends ConnectionState {
   /// {@macro connecting}
   const Connecting();
 
@@ -27,7 +27,7 @@ class Connecting extends ConnectionState {
 /// {@template connected}
 /// The WebSocket connection is established and communication is possible.
 /// {@endtemplate}
-class Connected extends ConnectionState {
+final class Connected extends ConnectionState {
   /// {@macro connected}
   const Connected();
 
@@ -44,7 +44,7 @@ class Connected extends ConnectionState {
 /// The WebSocket connection was lost
 /// and is in the process of being re-established.
 /// {@endtemplate}
-class Reconnecting extends ConnectionState {
+final class Reconnecting extends ConnectionState {
   /// {@macro reconnecting}
   const Reconnecting();
 
@@ -60,7 +60,7 @@ class Reconnecting extends ConnectionState {
 /// {@template reconnected}
 /// The WebSocket connection was lost and has been re-established.
 /// {@endtemplate}
-class Reconnected extends ConnectionState {
+final class Reconnected extends ConnectionState {
   /// {@macro reconnected}
   const Reconnected();
 
@@ -77,7 +77,7 @@ class Reconnected extends ConnectionState {
 /// The WebSocket connection is going through the closing handshake,
 /// or the close() method has been invoked.
 /// {@endtemplate}
-class Disconnecting extends ConnectionState {
+final class Disconnecting extends ConnectionState {
   /// {@macro disconnecting}
   const Disconnecting();
 
@@ -93,7 +93,7 @@ class Disconnecting extends ConnectionState {
 /// {@template disconnected}
 /// The WebSocket connection has been closed or could not be established.
 /// {@endtemplate}
-class Disconnected extends ConnectionState {
+final class Disconnected extends ConnectionState {
   /// {@macro disconnected}
   const Disconnected({this.code, this.reason, this.error, this.stackTrace});
 
